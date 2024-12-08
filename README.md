@@ -23,12 +23,12 @@
 
 1. Repoyu klonlayın:
 ```bash
-git clone https://github.com/your-username/ogrenci-mutfagi.git
+git clone https://github.com/your-username/AI-YEMEKTARIF.git
 ```
 
 2. Proje dizinine gidin:
 ```bash
-cd ogrenci-mutfagi
+cd AI-YEMEKTARIF
 ```
 
 3. Bağımlılıkları yükleyin:
@@ -67,18 +67,5 @@ Uygulamanın çalışması için aşağıdaki environment variable'ların tanım
 4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
 5. Pull Request oluşturun
 
-## 📄 Lisans
 
-Bu proje MIT lisansı altında lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına bakın.
 
-## 🙏 Teşekkürler
-
-- Google Gemini AI API
-- Next.js ekibi
-- Tailwind CSS ekibi
-
-## 📧 İletişim
-
-Proje Sahibi: [İsminiz]
-E-posta: [E-posta adresiniz]
-Proje Link: [GitHub repo linkiniz]
