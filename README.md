@@ -1,25 +1,48 @@
-# Öğrenci Mutfağı
+# 🍳 Öğrenci Mutfağı - AI Destekli Yemek Tarifi Asistanı
 
-Öğrenci Mutfağı, elinizdeki malzemelerle yapabileceğiniz yemek tariflerini AI destekli olarak öneren bir web uygulamasıdır. Bu proje, özellikle öğrencilerin mevcut malzemelerle pratik yemekler yapabilmesini amaçlamaktadır.
+<div align="center">
+  <img src="public/logo.png" alt="Öğrenci Mutfağı Logo" width="200"/>
+  <p><em>Elindeki malzemelerle yapabileceğin en iyi tarifler!</em></p>
+</div>
 
-## 🚀 Özellikler
+## 📖 Proje Hakkında
 
-- Malzeme bazlı tarif önerileri
-- AI destekli tarif oluşturma
-- Responsive tasarım
-- Kolay kullanıcı arayüzü
-- Adım adım tarif talimatları
-- Pişirme süresi ve zorluk seviyesi bilgisi
+Öğrenci Mutfağı, özellikle öğrencilerin ve yemek yapmaya yeni başlayanların mutfaktaki mevcut malzemelerle neler yapabileceklerini keşfetmelerine yardımcı olan yapay zeka destekli bir web uygulamasıdır. Google'ın Gemini AI teknolojisini kullanarak, kullanıcıların ellerindeki malzemelerle yapabilecekleri pratik, lezzetli ve ekonomik tarifleri önermektedir.
 
-## 🛠️ Teknolojiler
+### 🎯 Temel Özellikler
 
-- Next.js 13
-- TypeScript
-- Tailwind CSS
-- Google Gemini AI API
-- React Hooks
+- **Akıllı Tarif Önerileri**: Elinizdeki malzemelere göre özelleştirilmiş tarifler
+- **Kategori Bazlı Arama**: Kahvaltı, öğle yemeği, akşam yemeği, atıştırmalık vb.
+- **Süre Optimizasyonu**: Her aramada farklı pişirme sürelerine sahip 3 tarif:
+  - ⚡ Hızlı Tarif (15 dk veya az)
+  - ⏱️ Orta Süreli (15-30 dk arası)
+  - 👨‍🍳 Detaylı Tarif (30 dk üzeri)
+- **Sağlık Odaklı**: Kalori bilgisi ve özel diyet seçenekleri (Vejetaryen, Glutensiz)
+- **Kullanıcı Dostu Arayüz**: Kolay malzeme ekleme ve tarif görüntüleme
+- **Mobil Uyumlu**: Responsive tasarım
+- **Tarif Paylaşımı**: Beğendiğiniz tarifleri arkadaşlarınızla paylaşma
 
-## 📦 Kurulum
+## 🛠️ Teknoloji Yığını
+
+### Frontend
+- **Next.js 13**: React tabanlı modern web framework
+- **TypeScript**: Tip güvenliği ve daha iyi geliştirici deneyimi
+- **Tailwind CSS**: Özelleştirilebilir ve responsive tasarım
+- **React Hooks**: State yönetimi ve yaşam döngüsü
+- **Lucide Icons**: Modern ve şık ikonlar
+
+### Backend
+- **Next.js API Routes**: Serverless backend çözümü
+- **Google Gemini AI**: Yapay zeka destekli tarif üretimi
+
+### Diğer Araçlar
+- **ESLint**: Kod kalitesi ve standartları
+- **Prettier**: Kod formatlaması
+- **React Hot Toast**: Kullanıcı bildirimleri
+
+## 🏗️ Proje Yapısı
+
+## �� Kurulum
 
 1. Repoyu klonlayın:
 ```bash

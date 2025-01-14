@@ -6,6 +6,8 @@ import Button from '../../components/common/Button';
 import IngredientInput from '../../components/recipes/IngredientInput';
 import IngredientList from '../../components/recipes/IngredientList';
 import RecipeList from '../../components/recipes/RecipeList';
+import { toast } from 'react-hot-toast';
+import { mealCategories } from '../../data/mealCategories';
 
 // Tip tanımı
 interface Recipe {
@@ -18,29 +20,42 @@ interface Recipe {
 
 export default function RecipesPage() {
     const [ingredients, setIngredients] = useState<string[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState<string>('');
     const [isLoading, setIsLoading] = useState(false);
     const [recipes, setRecipes] = useState<Recipe[]>([]);
   
     const handleFindRecipes = async () => {
       setIsLoading(true);
       try {
+        if (ingredients.length < 2) {
+          toast.error('Lütfen en az 2 malzeme ekleyin');
+          return;
+        }
+
         const response = await fetch('/api/recipes', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ ingredients }),
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            ingredients,
+            category: selectedCategory 
+          }),
         });
-  
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || 'Tarif oluşturulurken bir hata oluştu');
-        }
-  
+
         const data = await response.json();
-        setRecipes(data.recipes || []);
-      } catch (error) {
-        alert(error.message || 'Tarif oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.');
+        
+        if (!response.ok) {
+          throw new Error(data.error || 'Tarif oluşturulurken bir hata oluştu');
+        }
+
+        if (!data.recipes || data.recipes.length === 0) {
+          toast.error('Bu malzemelerle tarif bulunamadı');
+          return;
+        }
+
+        setRecipes(data.recipes);
+        toast.success(`${data.recipes.length} tarif bulundu!`);
+      } catch (error: unknown) {
+        toast.error((error as Error).message);
       } finally {
         setIsLoading(false);
       }
@@ -54,11 +69,19 @@ export default function RecipesPage() {
                 <div>
                 <h1 className="text-2xl font-bold text-textDark mb-2">Tarif Bul</h1>
             <p className="text-gray-600">
-              Elindeki malzemeleri ekle, sana uygun tarifleri bulalım!
+              Yemek türünü seç, malzemeleri ekle, sana uygun tarifleri bulalım!
             </p>
                 </div>
-              <IngredientInput onAddIngredient={(ingredient) => setIngredients([...ingredients, ingredient])} />
-              <IngredientList ingredients={ingredients} onRemoveIngredient={(index: number) => setIngredients(ingredients.filter((_, i) => i !== index))} />
+              <IngredientInput 
+                onAddIngredient={(ingredient) => setIngredients([...ingredients, ingredient])}
+                categories={mealCategories}
+                selectedCategory={selectedCategory}
+                onCategoryChange={setSelectedCategory}
+              />
+              <IngredientList 
+                ingredients={ingredients} 
+                onRemoveIngredient={(index) => setIngredients(ingredients.filter((_, i) => i !== index))}
+              />
   
               {ingredients.length > 0 && (
                 <div className="pt-4">
